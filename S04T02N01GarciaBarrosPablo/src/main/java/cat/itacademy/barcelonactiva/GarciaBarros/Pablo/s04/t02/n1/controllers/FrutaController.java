@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 
 import cat.itacademy.barcelonactiva.GarciaBarros.Pablo.s04.t02.n1.model.repository.Fruta;
 import cat.itacademy.barcelonactiva.GarciaBarros.Pablo.s04.t02.n1.model.services.FrutaService;
@@ -16,7 +15,7 @@ import cat.itacademy.barcelonactiva.GarciaBarros.Pablo.s04.t02.n1.model.services
 
 @Controller
 //Con la notación controller establezco que esta clase es un controller
-public class FruitController {
+public class FrutaController {
 	
 	@Autowired //Esta notación dice que debe instanciar un objeto de la siguiente instancia
 	private FrutaService frutas;
