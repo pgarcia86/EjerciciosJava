@@ -10,12 +10,11 @@ public interface IFruitService {
 	
 	public Fruit getById(int id);
 	
-	public void delete(int id);
+	public void deleteById(int id);
 	
-	public void update(int id, int cant);
+	public void updateStock(Fruit fruit);
 	
-	public void add(int id, String name, int cant);
+	public void add(Fruit fruit);
 	
-	public void updateStock(int id, int cant);
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import cat.itacademy.barcelonactiva.GarciaBarros.Pablo.s04.t02.n02.model.domain.IFruit;
 import cat.itacademy.barcelonactiva.GarciaBarros.Pablo.s04.t02.n02.model.repository.Fruit;
@@ -11,7 +12,7 @@ import cat.itacademy.barcelonactiva.GarciaBarros.Pablo.s04.t02.n02.model.reposit
 @Service
 public class FruitService implements IFruitService{
 
-	@Autowired
+	@Autowired //Cuando tenga que instanciar el objeto de debajo, creará una instancia de ese tipo
 	private IFruit fruit;
 	
 	@Override
@@ -20,39 +21,22 @@ public class FruitService implements IFruitService{
 	}
 
 	@Override
-	public Fruit getById(int id) {
+	public Fruit getById(int id) {		
 		return fruit.getReferenceById(id);
 	}
 
 	@Override
-	public void delete(int id) {
-		// TODO Auto-generated method stub
-		
+	public void deleteById(int id) {
+		fruit.deleteById(id);
 	}
 
 	@Override
-	public void update(int id, int cant) {
-		// TODO Auto-generated method stub
-		
+	public void add(@RequestBody Fruit fruit) {		
+		this.fruit.save(fruit);		
 	}
 
 	@Override
-	public void add(int id, String name, int cant) {
-		
-		Fruit newFruit = new Fruit(id, name, cant);
-		this.fruit.save(newFruit);
-		
+	public void updateStock(Fruit fruit) {		
+		this.fruit.save(fruit);		
 	}
-
-	@Override
-	public void updateStock(int id, int cant) {
-		
-		Fruit auxFruit = fruit.getReferenceById(id);
-		auxFruit.addCant(cant);
-		fruit.save(auxFruit);
-		
-		
-	}
-
-
 }

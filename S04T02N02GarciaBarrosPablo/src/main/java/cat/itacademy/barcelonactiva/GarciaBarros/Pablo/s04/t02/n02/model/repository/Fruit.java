@@ -1,35 +1,27 @@
 package cat.itacademy.barcelonactiva.GarciaBarros.Pablo.s04.t02.n02.model.repository;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 
-@Entity
-
-@Table(name="frutas")
+@Entity //Con esta notación indico que esta clase es una entidad en la BD
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})	//Con esta notación permito que me devuelva el objeto con JSON
+@Table(name="frutas") //Indico el nombre de la tabla
 public class Fruit {
 	
-	@Id
-	@Column(name="id")
-	
+	@Id //Indico que este es el ID
+	@Column(name="id")	//Indico el nombre de la columna
 	private int id;
 	
-	@Column(name="name", length=50, nullable=false)
+	@Column(name="name", length=50, nullable=false) //Indico el nombre y las propiedades de la columna
 	private String name;
 	
 	@Column(name="cant")
-	private int cant;
-	
-	public Fruit() {}
-	
-	public Fruit(int id, String name, int cant) {
-		this.cant=cant;
-		this.name=name;
-		this.id=id;
-	}
-	
+	private int cant;	
 	
 	public int getId() {
 		return id;
@@ -48,9 +40,5 @@ public class Fruit {
 	}
 	public void setCant(int cant) {
 		this.cant = cant;
-	}
-	
-	public void addCant(int cant) {
-		this.cant += cant;
 	}
 }
